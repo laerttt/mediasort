@@ -1,86 +1,100 @@
-# MediaSort
+<p align="center">
+  <img src="src-tauri/icons/icon.png" width="240" />
+</p>
 
-A keyboard-driven media sorter built with Tauri 2 + vanilla JS.
+<h1 align="center">MediaSort</h1>
+<p align="center">
+  Fast, keyboard-driven media sorting for photos, videos, and audio
+</p>
 
-## Prerequisites
+---
 
-- [Rust](https://rustup.rs/) (stable)
-- [Node.js](https://nodejs.org/) 18+
-- **macOS**: Xcode Command Line Tools (`xcode-select --install`)
-- **Linux**: `sudo apt install libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev`
+##  Overview
 
-## Setup
+MediaSort lets you quickly sort large collections of media using only your keyboard.
 
-```bash
-# 1. Install JS dependencies
-npm install
+No dragging. No clicking. Just flow.
 
-# 2. Run in development mode (hot-reload)
-npm run dev
+---
 
-# 3. Build a distributable bundle
-npm run build
-```
+##  Screenshots
 
-## Architecture
+### Home
+<img src="demoscr/home.png" width="800" />
 
-```
-mediasort/
-├── ui/                   # Frontend — plain HTML/CSS/JS, no framework
-│   ├── index.html
-│   ├── style.css
-│   └── app.js            # All screen logic (home / setup / sort)
-├── src-tauri/
-│   ├── src/
-│   │   ├── main.rs       # Entry point
-│   │   └── lib.rs        # All Tauri commands
-│   ├── capabilities/
-│   │   └── default.json  # Tauri v2 permissions
-│   ├── tauri.conf.json
-│   └── Cargo.toml
-├── Cargo.toml            # Workspace root
-└── package.json
-```
+### Project Setup
+<img src="demoscr/project.png" width="800" />
 
-## Tauri Commands (Rust → JS)
+### Sorting Mode
+<img src="demoscr/vibeCoding.png" width="800" />
 
-| Command | Description |
-|---|---|
-| `pick_folder()` | Native OS folder picker dialog |
-| `scan_media(folder)` | Recursively find all media files |
-| `move_file(src, dest_dir)` | Move file, handles name collisions |
-| `save_project(project)` | Persist project JSON to app data dir |
-| `load_project(id)` | Load a project by UUID |
-| `list_projects()` | List all saved projects |
-| `delete_project(id)` | Remove a project (files untouched) |
+---
 
-## Project JSON Format
+##  How It Works
 
-```json
-{
-  "id": "uuid-v4",
-  "name": "Summer 2024",
-  "source_folder": "/Users/you/Photos/Summer",
-  "current_index": 42,
-  "destinations": [
-    { "name": "Keep",  "path": "/Users/you/Keep",  "keystroke": "E" },
-    { "name": "Trash", "path": "/Users/you/Trash", "keystroke": "D" }
-  ],
-  "media_files": ["/path/to/img1.jpg", "…"],
-  "history": [["/original/path", "/moved/to/path"]]
-}
-```
+1. **Create a Project**
+   - Choose your source folder
 
-## Keyboard Shortcuts (Sort Screen)
+2. **Scan Media**
+   - All supported files are automatically detected
+
+3. **Add Destinations**
+   - Example: `Keep`, `Trash`, `Favorites`
+   - Assign a key to each
+
+4. **Start Sorting**
+   - One file at a time, full focus
+
+---
+* Files are **moved**, not copied
+* Undo is available for the last action
+* Your projects are saved locally
+---
+
+##  Cu️stomize Keyboard Controls
 
 | Key | Action |
-|---|---|
-| Configured key (e.g. `E`) | Move current file to that destination |
-| `←` Arrow Left | Undo last move |
-| `→` Arrow Right | Skip file (no move) |
+|-----|--------|
+| Assigned key (e.g. `E`) | Move file to destination |
+| ← Arrow | Undo last move |
+| → Arrow | Skip file |
 
-## Supported Formats
+---
+-  Extremely fast workflow
+- ️ Fully keyboard-driven
+-  Minimal UI, maximum focus
+-  Works with large media libraries
 
-**Images:** jpg, jpeg, png, gif, webp, bmp, tiff, heic, heif, avif, svg, ico, raw, cr2, cr3, nef, arw, dng, orf, rw2  
-**Video:** mp4, mov, avi, mkv, webm, m4v, flv, wmv, mpg, mpeg, 3gp  
-**Audio:** mp3, m4a, wav, flac, ogg, aac
+---
+
+##  Supported Formats
+
+### Images
+jpg, jpeg, png, gif, webp, bmp, tiff, heic, heif, avif, svg, ico, raw, cr2, cr3, nef, arw, dng, orf, rw2  
+
+### Video
+mp4, mov, avi, mkv, webm, m4v, flv, wmv, mpg, mpeg, 3gp  
+
+### Audio
+mp3, m4a, wav, flac, ogg, aac  
+
+---
+
+##  Getting Started
+
+Binary for MacOS available [here.](https://github.com/laerttt/mediasort/releases/tag/0.1.0)
+```bash
+npm install
+npm run dev
+````
+
+---
+
+##  Tech Stack
+
+* Tauri 2
+* Vanilla JavaScript
+* Rust
+
+---
+
