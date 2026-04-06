@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Default capability for mediasort","local":true,"windows":["main"],"permissions":["core:default","dialog:allow-open","fs:scope-home-recursive","fs:default","shell:default"]}}
